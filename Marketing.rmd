@@ -1,0 +1,93 @@
+# 1. BUSINESS UNDERSTANDING
+## a. Defining the question
+## b. Defining the metric of success
+## c. Understading the context
+## d. Recording the experimental design
+## e. Data Relevance
+## f. Appropriateness of the data
+# 2. DATA AQUISITION AND EXTRACTION, TRANSFORMING AND LOADING
+## a. Importing of the libraries
+```{r}
+library(data.table)
+```
+### Reading the data
+```{r}
+part12 <- fread('http://bit.ly/CarreFourDataset')
+part3 <- fread('http://bit.ly/SupermarketDatasetII')
+part4 <- fread('http://bit.ly/CarreFourSalesDataset')
+```
+```{r}
+head(part12,10)
+```
+```{r}
+tail(part12,10)
+```
+
+```{r}
+head(part12,10)
+```
+
+```{r}
+head(part4,10)
+```
+```{r}
+tail(part4,10)
+```
+```{r}
+part3 <- fread('http://bit.ly/SupermarketDatasetII' , sep= ':', header = FALSE)
+```
+
+```{r}
+head(part3, 10)
+```
+```{r}
+tail(part3,10)
+```
+```{r}
+cat('The first datasets dimentions are:')
+print(dim(part12))
+cat('\n')
+cat('The first datasets dimentions are:')
+print(dim(part3))
+cat('\n')
+cat('The first datasets dimentions are:')
+print(dim(part4))
+cat('\n')
+```
+
+```{r}
+part12$Total == part4$Sales
+```
+
+```{r}
+part12$Date == part4$Date
+```
+### Understanding the data
+
+```{r}
+majinazacolumns <- colnames(part12)
+typesofcolumndata <- c()
+uniquenoofelements <- c()
+for (qw in majinazacolumns){
+  typesofcolumndata <- c(typesofcolumndata, class(part12[[qw]]))
+  uniquenoofelements <- c(uniquenoofelements, length(unique(part12[[qw]])))
+}
+
+desc <- data.frame(
+  'Column Names' = majinazacolumns,
+  'Column Type' = typesofcolumndata,
+  'Number of unique' = uniquenoofelements
+)
+desc
+```
+### Outliers
+
+### Anomalies
+### Missing data 
+# 3. EXPLORATORY DATA ANALYSIS
+### Univariate 
+### Bivariate
+### Multivariate
+# 4. Insights
+# 5. Conclusion
+# 6. Recommendation
